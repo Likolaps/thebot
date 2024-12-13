@@ -17,8 +17,12 @@ public class Duel {
 
     public static void handleDuelCommand(SlashCommandInteractionEvent event) {
         Member member = event.getMember(); // celui qui va défier
+        Member opponent = event.getOption("opponent").getAsMember();
 
         event.reply("ID :"+member.getId() + " Name "  +  member.getEffectiveName()).setEphemeral(true).queue();
+
+        event.reply("ID :"+opponent.getId() + " Name "  +  opponent.getEffectiveName()).setEphemeral(true).queue();
+
     }
 
 
