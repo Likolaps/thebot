@@ -1,5 +1,6 @@
 package dwn.cda.thebot.bot;
 
+import dwn.cda.thebot.bot.commands.Duel;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -20,7 +21,7 @@ public class Bot extends ListenerAdapter {
                 Commands.slash("hello", "Say Hello"),
                 Commands.slash("duel", "Duel quelqu'un")
                         .addOptions(new OptionData(OptionType.USER, "opponent", "User à défier",  true))
-        ).addCommands(Commands.slash("duel","Duel qq")).queue();
+        ).queue();
     }
 
     @Override
@@ -30,7 +31,8 @@ public class Bot extends ListenerAdapter {
                 event.reply("Hello World").queue();
                 break;
             case "duel":
-                event.reply("duel").queue();
+                Duel duel = new Duel();
+                duel.handleDuelCommand(event);
                 break;
             default:
                 event.reply("I'm a teapot").setEphemeral(true).queue();
