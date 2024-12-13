@@ -25,6 +25,9 @@ public class Bot extends ListenerAdapter {
             case "hello":
                 event.reply("Hello World").queue();
                 break;
+            case "duel":
+                event.reply("Duel").queue();
+                break;
             default:
                 event.reply("I'm a teapot").setEphemeral(true).queue();
         }
