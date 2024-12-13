@@ -1,11 +1,14 @@
 package dwn.cda.thebot.bot;
 
 import dwn.cda.thebot.bot.entities.Player;
+import dwn.cda.thebot.bot.commands.Duel;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +21,8 @@ public class Bot extends ListenerAdapter {
         guild.updateCommands().addCommands(
                 Commands.slash("hello", "Say Hello"),
                 Commands.slash("stats", "Show player stats")
+                Commands.slash("duel", "Duel quelqu'un")
+                        .addOptions(new OptionData(OptionType.MENTIONABLE, "opponent", "User à défier",  true))
         ).queue();
     }
 
@@ -30,6 +35,9 @@ public class Bot extends ListenerAdapter {
             case "stats":
                 Player player = new Player(event);
                 player.ShowPlayerStats(event);
+            case "duel":
+                Duel duel = new Duel();
+                duel.handleDuelCommand(event);
                 break;
             default:
                 event.reply("I'm a teapot").setEphemeral(true).queue();
