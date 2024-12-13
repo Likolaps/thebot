@@ -1,8 +1,11 @@
 package dwn.cda.thebot.bot.commands;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+
+import java.awt.*;
 
 public class Duel {
     /*
@@ -12,15 +15,10 @@ public class Duel {
     *   fonction qui fait le 50/50 et qui retourne le resultat
     * */
 
-    public void handleDuelCommand(SlashCommandInteractionEvent event) {
-            User user = event.getUser();
+    public static void handleDuelCommand(SlashCommandInteractionEvent event) {
+        Member member = event.getMember(); // celui qui va défier
 
-        EmbedBuilder embedBuilder = new EmbedBuilder();
-        embedBuilder.addField("Nom", user.getName(),false);
-        embedBuilder.addField("Prenom", user.getAsMention(),false);
-        embedBuilder.addField("ID", user.getId(),false);
-
-        event.replyEmbeds(embedBuilder.build()).queue();
+        event.reply("ID :"+member.getId() + " Name "  +  member.getEffectiveName()).setEphemeral(true).queue();
     }
 
 
