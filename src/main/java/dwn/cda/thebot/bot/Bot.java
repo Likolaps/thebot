@@ -13,14 +13,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bot extends ListenerAdapter {
     private Guild guild;
+
     @Override
     public void onGuildReady(@NotNull GuildReadyEvent event) {
         guild = event.getGuild();
-        guild.updateCommands().addCommands(
-                Commands.slash("hello", "Say Hello"),
-                Commands.slash("duel", "Duel quelqu'un")
-                        .addOptions(new OptionData(OptionType.USER, "opponent", "User à défier",  true))
-        ).queue();
+        guild.updateCommands()
+                .addCommands(Commands.slash("hello", "Say Hello"))
+                .addCommands(Commands.slash("duel", "Duel qq")
+                        .addOptions(new OptionData(OptionType.USER, "opponent", "User à défier", true)))
+                .queue();
     }
 
     @Override
@@ -30,7 +31,7 @@ public class Bot extends ListenerAdapter {
                 event.reply("Hello World").queue();
                 break;
             case "duel":
-                event.reply("Duel").queue();
+                event.reply("duel").queue();
                 break;
             default:
                 event.reply("I'm a teapot").setEphemeral(true).queue();
