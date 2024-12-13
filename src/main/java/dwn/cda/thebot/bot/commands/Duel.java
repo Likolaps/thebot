@@ -24,7 +24,7 @@ public class Duel {
         Member winner = shuffle(member,opponent);
 
 
-        event.reply("Le gagnant est : " + winner.getEffectiveName()).setEphemeral(true).queue();
+        event.reply("Le gagnant est : " + winner.getEffectiveName()).queue();
     }
 
     public static Member shuffle (Member member, Member opponent) {
