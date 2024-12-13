@@ -20,7 +20,7 @@ public class Bot extends ListenerAdapter {
         guild.updateCommands().addCommands(
                 Commands.slash("hello", "Say Hello"),
                 Commands.slash("duel", "Duel quelqu'un")
-                        .addOptions(new OptionData(OptionType.USER, "opponent", "User à défier",  true))
+                        .addOptions(new OptionData(OptionType.MENTIONABLE, "opponent", "User à défier",  true))
         ).queue();
     }
 
