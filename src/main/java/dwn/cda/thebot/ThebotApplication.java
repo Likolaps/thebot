@@ -20,8 +20,6 @@ public class ThebotApplication {
     private Bot bot;
     private static String token;
 
-    public static final String databaseurl = "src/main/java/dwn/cda/thebot/bot/db.json";
-
     public static void main(String[] args) {
         token = args[0];
         SpringApplication.run(ThebotApplication.class, args);
