@@ -15,7 +15,8 @@ public class Bot extends ListenerAdapter {
     public void onGuildReady(@NotNull GuildReadyEvent event) {
         guild = event.getGuild();
         guild.updateCommands().addCommands(
-                Commands.slash("hello", "Say Hello")
+                Commands.slash("hello", "Say Hello"),
+                Commands.slash("duel", "Duel quelqu'un")
         ).queue();
     }
 
